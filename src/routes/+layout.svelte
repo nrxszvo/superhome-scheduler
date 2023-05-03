@@ -25,7 +25,7 @@
     import { onMount } from 'svelte';
     import { toast, Toaster } from 'svelte-french-toast';
 
-    let isFacebook = false;
+    $: isFacebook = window && window.navigator ? (navigator.userAgent.includes('FBAN') || navigator.userAgent.includes('FBAV')) : false;
     $: loginState = 'pending';
     let profileSrc;
 
@@ -117,9 +117,6 @@
                 return false;
             }
         };
-
-        const isFB = await import('detect-facebook-in-app-browser');
-        isFacebook = isFB.default();
 
         // try up to 3 times to load app state
         for (let i=0; i < 3; i++) {

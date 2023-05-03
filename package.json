@@ -19,7 +19,7 @@
 		"autoprefixer": "^10.4.14",
 		"classnames": "^2.3.2",
 		"esbuild": "^0.17.15",
-		"eslint": "^7.32.0",
+		"eslint": "^8.39.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^4.0.0",
 		"flowbite": "^1.6.4",
@@ -41,7 +41,6 @@
 	"dependencies": {
 		"@xata.io/client": "^0.22.4",
 		"daisyui": "^2.51.5",
-		"detect-facebook-in-app-browser": "^0.1.1",
 		"svelte-french-toast": "^1.0.3",
 		"svelte-gestures": "^1.4.1"
 	}
