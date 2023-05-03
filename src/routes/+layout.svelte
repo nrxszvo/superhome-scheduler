@@ -25,6 +25,7 @@
     import { onMount } from 'svelte';
     import { toast, Toaster } from 'svelte-french-toast';
 
+    let isFacebook = false;
     $: loginState = 'pending';
     let profileSrc;
 
@@ -116,6 +117,9 @@
                 return false;
             }
         };
+
+        const isFB = await import('detect-facebook-in-app-browser');
+        isFacebook = isFB.default();
 
         // try up to 3 times to load app state
         for (let i=0; i < 3; i++) {
@@ -392,3 +396,9 @@
 
 <Toaster/>
 
+{#if isFacebook}
+    <article class="fixed top-0 w-full h-full bg-orange-400 p-20">
+        <h1>Please don't use facebook browser</h1>
+        <p>To use default browser. Android tap in the upper right-hand corner. iOS tap in the lower right-hand corner.</p>
+    </article>
+{/if}
