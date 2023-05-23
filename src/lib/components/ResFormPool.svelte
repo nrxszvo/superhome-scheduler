@@ -6,8 +6,8 @@
 	import { Settings } from '$lib/settings.js';
 	import { adminView } from '$lib/utils.js';
 
-	const lanes = () => Settings.get('poolLanes');
-	const rooms = () => Settings.get('classrooms');
+	const lanes = (date) => Settings.get('poolLanes', date);
+	const rooms = (date) => Settings.get('classrooms', date);
 
 	export let rsv = null;
 	export let category = 'pool';
@@ -78,7 +78,7 @@
 				<div>
 					<select id="formLane1" name="lane1" value={rsv.lanes[0]}>
 						<option value="auto">Auto</option>
-						{#each lanes() as lane}
+						{#each lanes(date) as lane}
 							<option value={lane}>{lane}</option>
 						{/each}
 					</select>
@@ -87,7 +87,7 @@
 					<div>
 						<select id="formLane2" name="lane2" value={rsv.lanes[1]}>
 							<option value="auto">Auto</option>
-							{#each lanes() as lane}
+							{#each lanes(date) as lane}
 								<option value={lane}>{lane}</option>
 							{/each}
 						</select>
@@ -97,7 +97,7 @@
 				<div>
 					<select id="formRoom" name="room" value={rsv.room}>
 						<option value="auto">Auto</option>
-						{#each rooms() as room}
+						{#each rooms(date) as room}
 							<option value={room}>{room}</option>
 						{/each}
 					</select>

@@ -124,7 +124,7 @@ const getWidth = (rsv) => nOccupants([rsv]) + rsv.buddies.length;
 function rsvToBlock(rsv, minTime, inc, resourceNames) {
 	let startTime = (timeStrToMin(rsv.startTime) - minTime) / inc;
 	let endTime = (timeStrToMin(rsv.endTime) - minTime) / inc;
-	let occ = Settings.get('maxOccupantsPerLane');
+	let occ = Settings.get('maxOccupantsPerLane', rsv.date);
 	let width = getWidth(rsv);
 	let startSpaces;
 	if (rsv.category === 'pool') {
@@ -176,8 +176,8 @@ export function assignPoolSpaces(rsvs, dateStr) {
 	let sTs = startTimes(Settings, dateStr, 'pool');
 	let nTimes = sTs.length;
 	let minTime = timeStrToMin(sTs[0]);
-	let laneWidth = Settings.get('maxOccupantsPerLane');
-	let nSpaces = laneWidth * Settings.get('poolLanes').length;
+	let laneWidth = Settings.get('maxOccupantsPerLane', dateStr);
+	let nSpaces = laneWidth * Settings.get('poolLanes', dateStr).length;
 	let spacesByTimes = Array(nSpaces)
 		.fill()
 		.map(() => Array(nTimes).fill());
