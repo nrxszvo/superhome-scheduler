@@ -221,7 +221,7 @@
 				{disabled}
 				tabindex="5"
 			/>
-			<label for="formO2OnBuoy">O2 on buoy</label>
+			<label for="formO2OnBuoy">O2 on buoy ( additional charge )</label>
 		</div>
 	</div>
 </ResFormGeneric>
